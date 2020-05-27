@@ -1,0 +1,72 @@
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+html,
+body {
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+}
+
+body {
+    background-color: #DDD;
+}
+
+.app-box {
+    width: 90vw;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.buttons {
+    border: none;
+    padding: 10px 10px;
+}
+
+
+/* .top-buttons {} */
+
+
+/* .bottom-buttons {} */
+
+.editor {
+    width: 100%;
+    min-height: 1rem;
+    padding: 5px 5px 5px 8px;
+    resize: none;
+    outline: none;
+    background-color: white;
+    border: 1px solid #CCC;
+}
+
+.regexSelection {
+    background-color: #607D8B;
+    color: white;
+}
+
+.editor[contenteditable][placeholder]:empty:before {
+    content: attr(placeholder);
+    position: absolute;
+    color: gray;
+    background-color: transparent;
+}
+
+.output {
+    width: 100%;
+    min-height: 1rem;
+    padding: 5px 5px 5px 8px;
+    resize: none;
+    outline: none;
+    background-color: #EEE;
+    border: 1px solid #CCC;
+}
+
+.output[contenteditable][placeholder]:empty:before {
+    content: attr(placeholder);
+    position: absolute;
+    color: gray;
+    background-color: transparent;
+}

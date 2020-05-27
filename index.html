@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Regex Site</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+    <div class="app-box">
+        <div class="top-buttons">
+            <button class="buttons" onclick="findOnText(regex.duplicatedWords)">Palavras Duplicadas</button>
+        </div>
+        <div class="editor" id="editor" contenteditable="true" placeholder="Insira seu texto aqui." oninput="if(this.innerHTML.trim()==='<br>')this.innerHTML=''"></div>
+        <div class="bottom-buttons">
+            <button class="buttons">Consoantes Repetidas</button>
+        </div>
+        <div class="output" id="output" contenteditable="true" spellcheck="true" placeholder="Seu texto será copiado aqui." oninput="if(this.innerHTML.trim()==='<br>')this.innerHTML=''"></div>
+    </div>
+
+
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.5.0.slim.min.js" integrity="sha256-MlusDLJIP1GRgLrOflUQtshyP0TwT/RHXsI1wWGnQhs=" crossorigin="anonymous"></script>
+    <script>
+        window.jQuery || document.write(`<script src = "js\\jquery-3.5.0.slim.min.js">
+    <\/script>`)
+    </script>
+    <script src="js\script.js"></script>
+
+</body>
+
+</html>
