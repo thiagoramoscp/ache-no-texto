@@ -21,6 +21,19 @@ function findOnText(regularExpression) {
 
     output.innerHTML = updatedText;
 
+    const config = { attributes: true, childList: true, subtree: true, characterData: true };
+
+    const observerCallback = (mutationsList, observer) => {
+        for (let mutation of mutationsList) {
+            if (mutation.type == 'characterData') {
+                let selection = mutation.target.parentElement;
+                output.insertBefore(selection.firstChild, selection);
+                output.removeChild(selection);
+            }
+        }
+    }
+
+    let observer = new MutationObserver(observerCallback);
 
     if (selectionCollection.length > 0) {
 
@@ -32,24 +45,13 @@ function findOnText(regularExpression) {
             }
         });
 
-    }
-    const config = { attributes: true, childList: true, subtree: true, characterData: true };
-    const observerCallback = (mutationsList, observer) => {
-        console.log(mutationsList);
-        for (let mutation of mutationsList) {
-            if (mutation.type == 'characterData') {
-                console.log(mutation.target.parentElement)
-                let selection = mutation.target.parentElement;
-                output.insertBefore(selection.firstChild, selection);
-                output.removeChild(selection);
-            }
+        for (let i = 0; i < selectionCollection.length; i++) {
+            observer.observe(selectionCollection[i], config);
         }
+
     }
-    let observer = new MutationObserver(observerCallback);
-    observer.observe(output.firstElementChild, config);
 
-
-
+    //observer.observe(output.firstElementChild, config);
 
 
 };
