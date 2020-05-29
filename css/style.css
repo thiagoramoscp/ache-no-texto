@@ -43,6 +43,7 @@ body {
 }
 
 .regexSelection {
+    display: inline;
     background-color: #607D8B;
     color: white;
 }

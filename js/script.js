@@ -4,50 +4,69 @@ const regex = {
     selectedEndingTag: /<\/span>(?<=<span class="regexSelection">.+)/gi,
     begginingTag: /<span class="regexSelection">/g
 };
-// const testex = document.getElementsByTagName('span');
-// console.log(testex);
-// testex.forEach(element => {
-//     element.addEventListener('click', event => console.log(event));
-// });
 
-// function teste(e) {
+const editor = document.getElementById('editor');
+const output = document.getElementById('output');
+const selectionCollection = document.getElementsByClassName('regexSelection');
 
-// }
 
 function findOnText(regularExpression) {
 
 
-    let updatedText = document.getElementById('editor').innerHTML
+    let updatedText = editor.innerHTML
         .replace(regularExpression, (selectedMatch) => {
-            return `<span class="regexSelection" >${selectedMatch}</span>`
+            return `<div class="regexSelection">${selectedMatch}</div>`
         });
 
 
-    document.getElementById('output').innerHTML = updatedText;
+    output.innerHTML = updatedText;
 
 
-    if (document.getElementsByClassName('regexSelection').length > 0) {
+    if (selectionCollection.length > 0) {
 
-        document.getElementById('output').addEventListener('click', function(e) {
+        output.addEventListener('click', e => {
             if (e.target.className === 'regexSelection') {
-                e.target.classList.remove('regexSelection');
+                let selectionText = e.target.textContent;
+                output.insertBefore(e.target.firstChild, e.target);
+                output.removeChild(e.target);
             }
         });
-
-        document.getElementById('output').addEventListener('keydown', function(e) {
-            if (e.target.className === 'regexSelection') {
-                e.target.classList.remove('regexSelection');
-            }
-        });
-
-
-
-        // document.getElementsByTagName('span')
-        //     .forEach(item => item.addEventListener('keydown', function(e) {
-        //         console.log('oi');
-        //     }));
 
     }
+    const config = { attributes: true, childList: true, subtree: true, characterData: true };
+    const observerCallback = (mutationsList, observer) => {
+        console.log(mutationsList);
+        for (let mutation of mutationsList) {
+            if (mutation.type == 'characterData') {
+                console.log(mutation.target.parentElement)
+                let selection = mutation.target.parentElement;
+                output.insertBefore(selection.firstChild, selection);
+                output.removeChild(selection);
+            }
+        }
+    }
+    let observer = new MutationObserver(observerCallback);
+    observer.observe(output.firstElementChild, config);
 
-    //on keydown/press/up ou on prompt: fazer (span class="selection") sumir.. 
+
+
+
+
 };
+
+
+
+// unwrapp todos os b elements:
+
+// $(e.target).contents().unwrap();
+
+// ou:
+// var b = document.getElementsByTagName('b');
+
+// while(b.length) {
+//     var parent = b[ 0 ].parentNode;
+//     while( b[ 0 ].firstChild ) {
+//         parent.insertBefore(  b[ 0 ].firstChild, b[ 0 ] );
+//     }
+//      parent.removeChild( b[ 0 ] );
+// }
