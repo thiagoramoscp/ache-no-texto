@@ -4,6 +4,9 @@
     box-sizing: inherit;
 }
 
+
+/* colocar um título " ACHE NO TEXTO " bem grande com a palavra ACHE selecionada com o fundo escuro ou colorido e a cor da fonte clara(contrário do restante to texto)*/
+
 html,
 body {
     box-sizing: border-box;

@@ -31,3 +31,13 @@ export const unselect = () => {
 
     }
 }
+
+export function cleanEverySelection(selectionCollection) {
+    if (selectionCollection.length > 0) {
+        for (let i = selectionCollection.length; i > 0; i--) {
+            console.log(selectionCollection[0])
+            editor.insertBefore(selectionCollection[0].firstChild, selectionCollection[0]);
+            editor.removeChild(selectionCollection[0]);
+        }
+    }
+}
