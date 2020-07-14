@@ -1,5 +1,6 @@
 const regex = {
     duplicatedWords: /\b([A-Z]+)\s+\1\b/gi,
+    email: /([a-z0-9_\.\+-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})/gi,
     deselect: /<span class="regexSelection">.+<\/span>/gi,
     selectedEndingTag: /<\/span>(?<=<span class="regexSelection">.+)/gi,
     begginingTag: /<span class="regexSelection">/g
@@ -15,7 +16,7 @@ function findOnText(regularExpression) {
 
     let updatedText = editor.innerHTML
         .replace(regularExpression, (selectedMatch) => {
-            return `<div class="regexSelection">${selectedMatch}</div>`
+            return `<span class="regexSelection">${selectedMatch}</span>`
         });
 
 
@@ -37,6 +38,7 @@ function findOnText(regularExpression) {
 
     if (selectionCollection.length > 0) {
 
+        // deselecting on click
         output.addEventListener('click', e => {
             if (e.target.className === 'regexSelection') {
                 let selectionText = e.target.textContent;
@@ -45,6 +47,7 @@ function findOnText(regularExpression) {
             }
         });
 
+        //deselecting on change
         for (let i = 0; i < selectionCollection.length; i++) {
             observer.observe(selectionCollection[i], config);
         }
