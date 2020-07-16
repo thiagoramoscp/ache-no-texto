@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Regex Site</title>
+    <title>Ache no Texto</title>
     <link rel="stylesheet" href="css/style.css">
 
 </head>
@@ -12,11 +12,14 @@
 <body>
     <div class="app-box">
         <div class="top-buttons">
-            <button class="buttons" onclick="findOnText(regex.duplicatedWords)">Palavra Duplicada</button>
-            <button class="buttons" onclick="findOnText(regex.email)">E-mail</button>
-            <button class="buttons" onclick="findOnText(regex.brazilianZipCode)">CEP</button>
+            <button class="buttons" id="duplicatedWord">Palavra Duplicada</button>
+            <button class="buttons" id="email">E-mail</button>
+            <button class="buttons" id="brazilianZipCode">CEP</button>
         </div>
-        <div class="editor" id="editor" contenteditable="true" placeholder="Insira seu texto aqui." oninput="if(this.innerHTML.trim()==='<br>')this.innerHTML=''"></div>
+        <div class="copyBtnAndEditor">
+            <div class="editor" id="editor" contenteditable="true" placeholder="Insira seu texto aqui." oninput="if(this.innerHTML.trim()==='<br>')this.innerHTML=''"></div>
+            <button class="copyBtn" id="copyBtn">Copy</button>
+        </div>
         <div class="bottom-buttons">
             <button class="buttons">Consoantes Repetidas</button>
         </div>
@@ -30,7 +33,6 @@
     <\/script>`)
         </script>
         <script type="module" src="js\script.js"></script>
-        <script src="js\script.js"></script>
 </body>
 
 </html>

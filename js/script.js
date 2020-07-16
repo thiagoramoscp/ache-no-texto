@@ -1,8 +1,8 @@
-//import está fazendo findOnText ficar undefined
-//import { cleanEverySelection } from 'unselect';
+import { cleanEverySelection, unselect } from './unselect.js';
 
+//excluir as regexes que não estão sendo usadas
 const regex = {
-    duplicatedWords: /\b([A-Z]+)\s+\1\b/gi,
+    duplicatedWord: /\b([A-Z]+)\s+\1\b/gi,
     email: /([a-z0-9_\.\+-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})/gi,
     brazilianZipCode: /\b[0-9]{5}-[0-9]{3}\b/g,
     deselect: /<span class="regexSelection">.+<\/span>/gi,
@@ -13,16 +13,30 @@ const regex = {
 const editor = document.getElementById('editor');
 const selectionCollection = document.getElementsByClassName('regexSelection');
 
+const duplicatedWord = document.getElementById('duplicatedWord');
+const email = document.getElementById('email');
+const brazilianZipCode = document.getElementById('brazilianZipCode');
+
+
+
+
+duplicatedWord.addEventListener('click', (e) => {
+    findOnText(regex.duplicatedWord);
+})
+email.addEventListener('click', (e) => {
+    findOnText(regex.email);
+})
+brazilianZipCode.addEventListener('click', (e) => {
+    findOnText(regex.brazilianZipCode);
+})
+
+
+
+
 
 function findOnText(regularExpression) {
 
-    if (selectionCollection.length > 0) {
-        for (let i = selectionCollection.length; i > 0; i--) {
-            console.log(selectionCollection[0])
-            editor.insertBefore(selectionCollection[0].firstChild, selectionCollection[0]);
-            editor.removeChild(selectionCollection[0]);
-        }
-    }
+    cleanEverySelection(selectionCollection);
 
     let updatedText = editor.textContent
         .replace(regularExpression, (selectedMatch) => {
@@ -31,36 +45,24 @@ function findOnText(regularExpression) {
 
     editor.innerHTML = updatedText;
 
-    const config = { attributes: true, childList: true, subtree: true, characterData: true };
-
-    const observerCallback = (mutationsList, observer) => {
-        for (let mutation of mutationsList) {
-            if (mutation.type == 'characterData') {
-                let selection = mutation.target.parentElement;
-                editor.insertBefore(selection.firstChild, selection);
-                editor.removeChild(selection);
-            }
-        }
-    }
-
-    let observer = new MutationObserver(observerCallback);
-
-    if (selectionCollection.length > 0) {
-
-        editor.addEventListener('click', e => {
-            if (e.target.className === 'regexSelection') {
-                let selectionText = e.target.textContent;
-                editor.insertBefore(e.target.firstChild, e.target);
-                editor.removeChild(e.target);
-            }
-        });
-
-        for (let i = 0; i < selectionCollection.length; i++) {
-            observer.observe(selectionCollection[i], config);
-        }
-
-    }
-
-
+    unselect(selectionCollection);
 
 };
+
+
+
+
+// copy to clipboard button functionallity
+
+const copyBtn = document.getElementById('copyBtn');
+
+copyBtn.addEventListener('click', (e) => {
+    let range = new Range();
+    range.selectNodeContents(editor);
+
+    let selection = window.getSelection();
+    selection.removeAllRanges();
+    selection.addRange(range);
+    document.execCommand('copy');
+
+});
