@@ -6,10 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ache no Texto</title>
     <link rel="stylesheet" href="css/style.css">
-
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@700&display=swap" rel="stylesheet">
 </head>
 
 <body>
+    <header>
+        <h1 class="title"><span>ACHE</span> NO TEXTO</h1>
+    </header>
     <div class="app-box">
         <div class="top-buttons">
             <button class="buttons" id="duplicatedWord">Palavra Duplicada</button>
@@ -18,7 +21,7 @@
         </div>
         <div class="copyBtnAndEditor">
             <div class="editor" id="editor" contenteditable="true" placeholder="Insira seu texto aqui." oninput="if(this.innerHTML.trim()==='<br>')this.innerHTML=''"></div>
-            <button class="copyBtn" id="copyBtn">Copy</button>
+            <button class="copyBtn" id="copyBtn"><img src="./assets/icons/copy-icon-2.svg" alt="Copy button"></button>
         </div>
         <div class="bottom-buttons">
             <button class="buttons">Consoantes Repetidas</button>
