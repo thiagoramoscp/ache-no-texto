@@ -14,10 +14,29 @@
         <h1 class="title"><span>ACHE</span> NO TEXTO</h1>
     </header>
     <div class="app-box">
+        <div class="editorInfo">
+            <div class="editorInfoSpan" id="characterCount">
+                <span>Caracteres: </span>
+                <span id="characters">0</span>
+            </div>
+            <div class="editorInfoSpan" id="wordCount">
+                <span>Palavras:</span>
+                <span id="words">0</span>
+            </div>
+            <div class="editorInfoSpan" id="lineCount">
+                <span>Linhas:</span>
+                <span id="lines">0</span>
+            </div>
+        </div>
         <div class="top-buttons">
             <button class="buttons" id="duplicatedWord">Palavra Duplicada</button>
             <button class="buttons" id="email">E-mail</button>
             <button class="buttons" id="brazilianZipCode">CEP</button>
+            <button class="buttons" id="enderecoIp">Endereço IP</button>
+            <button class="buttons" id="data">Data (dd/mm/yyyy)</button>
+            <button class="buttons" id="w">w</button>
+            <button class="buttons" id="y">y</button>
+            <button class="buttons" id="z">z</button>
         </div>
         <div class="copyBtnAndEditor">
             <div class="editor" id="editor" contenteditable="true" placeholder="Insira seu texto aqui." oninput="if(this.innerHTML.trim()==='<br>')this.innerHTML=''"></div>
