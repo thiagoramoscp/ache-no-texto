@@ -14,6 +14,9 @@
         <h1 class="title"><span>ACHE</span> NO TEXTO</h1>
     </header>
     <div class="app-box">
+        <div class="resultBox">
+            <span class="numberOfMatches" id="numberOfMatches"></span>
+        </div>
         <div class="editorInfo">
             <div class="editorInfoSpan" id="characterCount">
                 <span>Caracteres: </span>
@@ -28,6 +31,7 @@
                 <span id="lines">0</span>
             </div>
         </div>
+
         <div class="top-buttons">
             <button class="buttons" id="duplicatedWord">Palavra Duplicada</button>
             <button class="buttons" id="email">E-mail</button>
@@ -40,12 +44,28 @@
         </div>
         <div class="copyBtnAndEditor">
             <div class="editor" id="editor" contenteditable="true" placeholder="Insira seu texto aqui." oninput="if(this.innerHTML.trim()==='<br>')this.innerHTML=''"></div>
-            <button class="copyBtn" id="copyBtn"><img src="./assets/icons/copy-icon-2.svg" alt="Copy button"></button>
+            <button class="copyBtn" id="copyBtn" title="Copiar Texto"><img src="./assets/icons/copy-icon-2.svg" alt="Copy button"></button>
         </div>
         <div class="bottom-buttons">
             <button class="buttons">Consoantes Repetidas</button>
         </div>
+        <div id="description">
+            <h2>Bem vindo à ferramenta Ache no texto!</h2>
+            <p>Aqui você consegue, de maneira rápida, encontrar as informações que você precisa.</p>
 
+            <h3>E-mail</h3>
+            <p>Encontra endereços de e-mail</p>
+            <h3>CEP</h3>
+            <p>Encontra uma sequência de 5 números, seguido por um ífem, seguido por 3 números (ex: 12345-012)</p>
+            <h3>Data</h3>
+            <p>Encontra datas no formato: dia/mês/ano. Eles podem estar separados tanto por barra "dd/mm/yyyy" quanto por traço "dd-mm-yyyy" ou por espaço "dd mm yyyy". </p>
+        </div>
+        <footer class="footer">
+            <p>Copyright ©2020 Ache no Texto | Deselvolvido por <a href="">Thiago Ramos C. P.</a></p>
+            <a href="">Política de Privacidade</a><br>
+            <a href="">Sitemap</a><br>
+            <a href="">Sobre</a>
+        </footer>
 
 
 

@@ -1,4 +1,4 @@
-import { cleanEverySelection, unselect } from './unselect.js';
+import { cleanEverySelection, watchToUnselect } from './unselect.js';
 import { updateWordCount, updateCharacterCount, updateLineCount } from './text-info-functions.js';
 
 //excluir as regexes que não estão sendo usadas
@@ -25,14 +25,23 @@ const w = document.getElementById('w');
 const y = document.getElementById('y');
 const z = document.getElementById('z');
 
+
 // PAINEL DE INFORMAÇÕES SOBRE O TEXTO
 
+//const numberOfMatches = document.getElementById('numberOfMatches');
+
 editor.addEventListener('input', (e) => {
+
     updateWordCount(editor, 'words');
-
     updateCharacterCount(editor, 'characters');
-
     updateLineCount(editor, 'lines');
+
+    // let text = editor.innerHTML;
+    // console.log(text)
+    // console.log(editor.children)
+
+    // //let childElements = text.children.length;
+    // document.getElementById('numberOfMatches').textContent = 'Resultado: ' + childElements;
 });
 
 
@@ -66,19 +75,20 @@ data.addEventListener('click', (e) => {
 
 
 
-
+// consertar: quando botão é clicado todos os linebreaks somem
+// consertado mas agora não funciona o unselect
 function findOnText(regularExpression) {
 
     cleanEverySelection(selectionCollection);
 
-    let updatedText = editor.textContent
+    let updatedText = editor.innerHTML
         .replace(regularExpression, (selectedMatch) => {
             return `<span class="regexSelection">${selectedMatch}</span>`
         });
 
     editor.innerHTML = updatedText;
 
-    unselect(selectionCollection);
+    watchToUnselect(editor, selectionCollection);
 
 };
 
