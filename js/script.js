@@ -96,8 +96,15 @@ function findOnText(regularExpression) {
 
 };
 
+// colar da área de tranferência para o #editor apenas texto, sem rich content
 
+editor.addEventListener('paste', (e) => {
+    e.preventDefault();
+    let text = e.clipboardData.getData('text/plain');
+    document.execCommand('insertText', false, text);
+});
 
+//quando copio sem usar o botão ele copia com a seleção e depois buga tudo quando colo
 
 // copy to clipboard button functionallity
 
