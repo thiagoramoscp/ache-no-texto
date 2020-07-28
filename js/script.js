@@ -6,8 +6,11 @@ const regex = {
     duplicatedWord: /\b([A-Z]+)\s+\1\b/gi,
     email: /([a-z0-9_\.\+-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})/gi,
     brazilianZipCode: /\b[0-9]{5}-[0-9]{3}\b/g,
-    enderecoIp: /(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)/g,
+    ipv4: /(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)/g,
+    ipv6: /\b(([0-9a-fA-F]{1,4}:){7,7}[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,7}:|([0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,5}(:[0-9a-fA-F]{1,4}){1,2}|([0-9a-fA-F]{1,4}:){1,4}(:[0-9a-fA-F]{1,4}){1,3}|([0-9a-fA-F]{1,4}:){1,3}(:[0-9a-fA-F]{1,4}){1,4}|([0-9a-fA-F]{1,4}:){1,2}(:[0-9a-fA-F]{1,4}){1,5}|[0-9a-fA-F]{1,4}:((:[0-9a-fA-F]{1,4}){1,6})|:((:[0-9a-fA-F]{1,4}){1,7}|:)|fe80:(:[0-9a-fA-F]{0,4}){0,4}%[0-9a-zA-Z]{1,}|::(ffff(:0{1,4}){0,1}:){0,1}((25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])\.){3,3}(25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])|([0-9a-fA-F]{1,4}:){1,4}:((25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])\.){3,3}(25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9]))\b/g,
     data: /\b(0?[1-9]|[12][0-9]|3[01])([ \/\-])(0?[1-9]|1[012])\2([0-9][0-9][0-9][0-9])(([ -])([0-1]?[0-9]|2[0-3]):[0-5]?[0-9]:[0-5]?[0-9])?\b/g,
+    cpf: /\b\d{3}\x2E\d{3}\x2E\d{3}\x2D\d{2}\b/g,
+    url: /(?:(?:https?|ftp):\/\/)(?:\S+(?::\S*)?@)?(?:(?!10(?:\.\d{1,3}){3})(?!127(?:\.\d{1,3}){3})(?!169\.254(?:\.\d{1,3}){2})(?!192\.168(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\x{00a1}\-\x{ffff}0-9]+-?)*[a-z\x{00a1}\-\x{ffff}0-9]+)(?:\.(?:[a-z\x{00a1}\-\x{ffff}0-9]+-?)*[a-z\x{00a1}\-\x{ffff}0-9]+)*(?:\.(?:[a-z\x{00a1}\-\x{ffff}]{2,})))(?::\d{2,5})?(?:\/[^\s]*)?/gi,
     deselect: /<span class="regexSelection">.+<\/span>/gi,
     selectedEndingTag: /<\/span>(?<=<span class="regexSelection">.+)/gi,
     begginingTag: /<span class="regexSelection">/g
@@ -19,11 +22,11 @@ const selectionCollection = document.getElementsByClassName('regexSelection');
 const duplicatedWord = document.getElementById('duplicatedWord');
 const email = document.getElementById('email');
 const brazilianZipCode = document.getElementById('brazilianZipCode');
-const enderecoIp = document.getElementById('enderecoIp');
+const ipv4 = document.getElementById('ipv4');
+const ipv6 = document.getElementById('ipv6');
 const data = document.getElementById('data');
-const w = document.getElementById('w');
-const y = document.getElementById('y');
-const z = document.getElementById('z');
+const cpf = document.getElementById('cpf');
+const url = document.getElementById('url');
 
 
 // PAINEL DE INFORMAÇÕES SOBRE O TEXTO
@@ -49,34 +52,35 @@ editor.addEventListener('input', (e) => {
 
 duplicatedWord.addEventListener('click', (e) => {
     findOnText(regex.duplicatedWord);
-})
+});
 email.addEventListener('click', (e) => {
     findOnText(regex.email);
-})
+});
 brazilianZipCode.addEventListener('click', (e) => {
     findOnText(regex.brazilianZipCode);
-})
-enderecoIp.addEventListener('click', (e) => {
-    findOnText(regex.enderecoIp);
-})
+});
+ipv4.addEventListener('click', (e) => {
+    findOnText(regex.ipv4);
+});
+ipv6.addEventListener('click', (e) => {
+    findOnText(regex.ipv6);
+});
 data.addEventListener('click', (e) => {
-        findOnText(regex.data);
-    })
-    // w.addEventListener('click', (e) => {
-    //     findOnText(regex.w);
-    // })
-    // y.addEventListener('click', (e) => {
-    //     findOnText(regex.y);
-    // })
-    // z.addEventListener('click', (e) => {
-    //     findOnText(regex.z);
-    // })
+    findOnText(regex.data);
+});
+cpf.addEventListener('click', (e) => {
+    findOnText(regex.cpf);
+});
+url.addEventListener('click', (e) => {
+    findOnText(regex.url);
+});
+// z.addEventListener('click', (e) => {
+//     findOnText(regex.z);
+// });
 
 
 
 
-// consertar: quando botão é clicado todos os linebreaks somem
-// consertado mas agora não funciona o unselect
 function findOnText(regularExpression) {
 
     cleanEverySelection(selectionCollection);

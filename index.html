@@ -36,11 +36,12 @@
             <button class="buttons" id="duplicatedWord">Palavra Duplicada</button>
             <button class="buttons" id="email">E-mail</button>
             <button class="buttons" id="brazilianZipCode">CEP</button>
-            <button class="buttons" id="enderecoIp">Endereço IP</button>
+            <button class="buttons" id="ipv4">Endereço IPv4</button>
+            <button class="buttons" id="ipv6">Endereço IPv6</button>
             <button class="buttons" id="data">Data (dd/mm/yyyy)</button>
-            <button class="buttons" id="w">w</button>
-            <button class="buttons" id="y">y</button>
-            <button class="buttons" id="z">z</button>
+            <button class="buttons" id="cpf">CPF</button>
+            <button class="buttons" id="url">URL</button>
+
         </div>
         <div class="copyBtnAndEditor">
             <div class="editor" id="editor" contenteditable="true" placeholder="Insira seu texto aqui." oninput="if(this.innerHTML.trim()==='<br>')this.innerHTML=''"></div>
@@ -59,6 +60,8 @@
             <p>Encontra uma sequência de 5 números, seguido por um ífem, seguido por 3 números (ex: 12345-012)</p>
             <h3>Data</h3>
             <p>Encontra datas no formato: dia/mês/ano. Eles podem estar separados tanto por barra "dd/mm/yyyy" quanto por traço "dd-mm-yyyy" ou por espaço "dd mm yyyy". </p>
+            <h3>CPF</h3>
+            <p>Encontra uma sequência de 11 dígitos no formato: xxx.xxx.xxx-xx onde "x" representa um dígito de 0 a 9.</p>
         </div>
         <footer class="footer">
             <p>Copyright ©2020 Ache no Texto | Deselvolvido por <a href="">Thiago Ramos C. P.</a></p>
