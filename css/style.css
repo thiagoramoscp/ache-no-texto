@@ -4,6 +4,12 @@
     box-sizing: inherit;
 }
 
+:root {
+    --main-color: #000;
+    --light: #f8f9fa;
+    --white: #FFF;
+}
+
 
 /* verde #06D6A2 - preto #4C4859*/
 
@@ -16,24 +22,37 @@ body {
     height: 100vw;
     margin: 0px;
     padding: 0px;
-    font-family: 'Helvetica', 'Anton', 'Oswald', sans-serif;
+    font-family: 'Open Sans', 'Helvetica', 'Arial', sans-serif;
 }
 
 body {
-    background-color: #f7f7f7;
+    background-color: #f5f5f5;
 }
 
+
+/* -- HEADER -- */
+
+.header {
+    background-color: var(--white);
+    display: flex;
+}
+
+.header-logo {}
+
 .title {
-    font-family: 'Anton', 'Oswald', sans-serif;
+    /* font-family: 'Anton', 'Oswald', sans-serif; */
     color: #3a2637;
-    font-size: 16vw;
+    /* font-size: 16vw;
     width: 95vw;
     max-width: 1300px;
     margin: 0px auto 0px auto;
-    text-align: center;
+    text-align: center; */
 }
 
-.title span {
+.header-description {}
+
+
+/* .title span {
     margin-top: 0px;
     margin-bottom: 0px;
 }
@@ -42,7 +61,11 @@ body {
     .title {
         font-size: 6rem;
     }
-}
+} */
+
+.menu-line {}
+
+.tool-bar {}
 
 .resultBox {
     background-color: rgba(0, 0, 0, 0.2);
@@ -68,7 +91,7 @@ body {
 
 .app-box {
     width: 95vw;
-    max-width: 1300px;
+    max-width: 1200px;
     margin-left: auto;
     margin-right: auto;
 }
