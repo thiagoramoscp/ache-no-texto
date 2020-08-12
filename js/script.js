@@ -123,3 +123,9 @@ copyBtn.addEventListener('click', (e) => {
     document.execCommand('copy');
 
 });
+
+// FOOTER
+
+const footerYear = document.getElementById('footerYear');
+const currentYear = new Date().getFullYear().toString();
+footerYear.textContent = currentYear;

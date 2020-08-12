@@ -11,59 +11,69 @@
 
 <body>
     <header class="header">
-        <div class="header-logo">
-            <h1 class="title"><span>ACHE</span> NO TEXTO</h1>
-        </div>
-        <div class="header-description">
+        <div class="header-top-container">
+            <img src="./assets/logo-ache-no-texto.png" alt="logo" srcset="">
             <p>Ferramenta gratuita de busca de informações em texto.</p>
         </div>
+        <div class="line"></div>
+        <div class="header-bottom-container">
+            <div class="tool-bar">
+                <a href="#">Buscador de informações</a>
+            </div>
+        </div>
     </header>
-    <div class="menu-line"></div>
-    <div class="tool-bar"></div>
-    <div class="app-box">
-        <div class="tool-description">
-            <h2>Clique no botões correspondentes ao tipo de informações que deseja encontrar no texto.</h2>
-        </div>
-        <div class="resultBox">
-            <span class="numberOfMatches" id="numberOfMatches"></span>
-        </div>
-        <div class="editorInfo">
-            <div class="editorInfoSpan" id="characterCount">
-                <span>Caracteres: </span>
-                <span id="characters">0</span>
+    <div class="app">
+        <div class="app-box">
+            <div class="tool-description">
+                <h2>Clique no botões correspondentes ao tipo de informações que deseja encontrar no texto.</h2>
             </div>
-            <div class="editorInfoSpan" id="wordCount">
-                <span>Palavras:</span>
-                <span id="words">0</span>
+            <div class="resultBox">
+                <span class="numberOfMatches" id="numberOfMatches"></span>
             </div>
-            <div class="editorInfoSpan" id="lineCount">
-                <span>Linhas:</span>
-                <span id="lines">0</span>
+            <div class="editorInfo">
+                <div class="editorInfoSpan" id="characterCount">
+                    <span>Caracteres: </span>
+                    <span id="characters">0</span>
+                </div>
+                <div class="editorInfoSpan" id="wordCount">
+                    <span>Palavras:</span>
+                    <span id="words">0</span>
+                </div>
+                <div class="editorInfoSpan" id="lineCount">
+                    <span>Linhas:</span>
+                    <span id="lines">0</span>
+                </div>
             </div>
-        </div>
 
-        <div class="top-buttons">
-            <button class="buttons" id="duplicatedWord">Palavra Duplicada</button>
-            <button class="buttons" id="email">E-mail</button>
-            <button class="buttons" id="brazilianZipCode">CEP</button>
-            <button class="buttons" id="ipv4">Endereço IPv4</button>
-            <button class="buttons" id="ipv6">Endereço IPv6</button>
-            <button class="buttons" id="data">Data (dd/mm/yyyy)</button>
-            <button class="buttons" id="cpf">CPF</button>
-            <button class="buttons" id="url">URL</button>
+            <div class="top-buttons">
+                <button class="buttons" id="duplicatedWord">Palavra Duplicada</button>
+                <button class="buttons" id="email">E-mail</button>
+                <button class="buttons" id="brazilianZipCode">CEP</button>
+                <button class="buttons" id="ipv4">Endereço IPv4</button>
+                <button class="buttons" id="ipv6">Endereço IPv6</button>
+                <button class="buttons" id="data">Data (dd/mm/yyyy)</button>
+                <button class="buttons" id="cpf">CPF</button>
+                <button class="buttons" id="url">URL</button>
 
+            </div>
+            <div class="copyBtnAndEditor">
+                <div class="editor" id="editor" contenteditable="true" placeholder="Insira seu texto aqui." oninput="if(this.innerHTML.trim()==='<br>')this.innerHTML=''"></div>
+                <button class="copyBtn" id="copyBtn" title="Copiar Texto"><img src="./assets/icons/copy-icon-2.svg" alt="Copy button"></button>
+            </div>
+            <div class="bottom-buttons">
+                <button class="buttons">Consoantes Repetidas</button>
+            </div>
         </div>
-        <div class="copyBtnAndEditor">
-            <div class="editor" id="editor" contenteditable="true" placeholder="Insira seu texto aqui." oninput="if(this.innerHTML.trim()==='<br>')this.innerHTML=''"></div>
-            <button class="copyBtn" id="copyBtn" title="Copiar Texto"><img src="./assets/icons/copy-icon-2.svg" alt="Copy button"></button>
-        </div>
-        <div class="bottom-buttons">
-            <button class="buttons">Consoantes Repetidas</button>
-        </div>
-        <div id="description">
+    </div>
+    <div class="line"></div>
+    <div class="description">
+        <div class="description-box">
             <h2>Bem vindo à ferramenta Ache no texto!</h2>
-            <p>Aqui você consegue, de maneira rápida, encontrar as informações que você precisa.</p>
-
+            <p class="h2-description">Aqui você consegue, de maneira rápida, encontrar as informações que você precisa.</p>
+            <br>
+            <h3>Contador de Caractéres, Palavras e Linhas</h3>
+            <p>Antes mesmo de usar a ferramenta para encontrar informações específicas, é possível usá-la para contar o número de caractéres, palavras e linhas presentes no texto.</p>
+            <p>Basta começar a escrever ou colar seu texto para que o contador começe a funcionar!</p>
             <h3>E-mail</h3>
             <p>Encontra endereços de e-mail</p>
             <h3>CEP</h3>
@@ -72,22 +82,28 @@
             <p>Encontra datas no formato: dia/mês/ano. Eles podem estar separados tanto por barra "dd/mm/yyyy" quanto por traço "dd-mm-yyyy" ou por espaço "dd mm yyyy". </p>
             <h3>CPF</h3>
             <p>Encontra uma sequência de 11 dígitos no formato: xxx.xxx.xxx-xx onde "x" representa um dígito de 0 a 9.</p>
+            <h3>Dica!</h3>
+            <p>O botão de copiar no canto superior direito da caixa de texto copia automaticamente para a área de transferência todo o texto presente no seu interior.</p>
         </div>
-        <footer class="footer">
-            <p>Copyright ©2020 Ache no Texto | Deselvolvido por <a href="">Thiago Ramos C. P.</a></p>
+    </div>
+    <div class="line"></div>
+    <footer class="footer">
+        <div class="footer-box">
+            <p>Copyright © <span id="footerYear">2020</span> Ache no Texto | Deselvolvido por <a href="">Thiago Ramos C. P.</a></p>
             <a href="">Política de Privacidade</a><br>
             <a href="">Sitemap</a><br>
             <a href="">Sobre</a>
-        </footer>
+        </div>
+    </footer>
 
 
 
-        <script src="https://code.jquery.com/jquery-3.5.0.slim.min.js" integrity="sha256-MlusDLJIP1GRgLrOflUQtshyP0TwT/RHXsI1wWGnQhs=" crossorigin="anonymous"></script>
-        <script>
-            window.jQuery || document.write(`<script src = "js\\jquery-3.5.0.slim.min.js">
+    <script src="https://code.jquery.com/jquery-3.5.0.slim.min.js" integrity="sha256-MlusDLJIP1GRgLrOflUQtshyP0TwT/RHXsI1wWGnQhs=" crossorigin="anonymous"></script>
+    <script>
+        window.jQuery || document.write(`<script src = "js\\jquery-3.5.0.slim.min.js">
     <\/script>`)
-        </script>
-        <script type="module" src="./js/script.js"></script>
+    </script>
+    <script type="module" src="./js/script.js"></script>
 </body>
 
 </html>

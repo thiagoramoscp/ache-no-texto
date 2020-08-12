@@ -33,7 +33,8 @@
 
 # Ideas: 
 
+- gerador de palavras aleatórias
 
 - encontrar pal�ndromos
 
--adicionar mensagem: "Nenhum XXX(ex: palíndromo) encontrado" ao clicar em algum botão.
+- adicionar mensagem: "Nenhum XXX(ex: palíndromo) encontrado" ao clicar em algum botão.
